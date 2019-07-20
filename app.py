@@ -16,6 +16,7 @@ def index():
 
 class Designers(Resource):
     def get(self):
+        print( list(designers.get_designer_records()[0].keys()) )
         return designers.get_designer_records()
 
     def post(self):

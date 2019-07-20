@@ -38,22 +38,28 @@
           {% for designer in designerbase %}
           <div class="card h-100" style="width: 20rem;">
               <div class="card-body">
-                <h5 class="card-title">{{ designer["first_name"] }} {{ designer["last_name"] }}</h5>
+                <h5 class="card-title">{{ designer["First Name"] }} {{ designer["Last Name"] }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Class of {{ designer["Class Year"] }}</h6>
                 <p class="card-text">
                     Interested in <em>{{ designer["Design Positions"] }}</em>
+                <p class="card-text">
                     Also interested in <em>{{ designer["Specialized Positions"] }}</em>
                 </p>
                 <p class="card-text">
                     Relevant Experience: <em>{{ designer["Relevant Experience"] }}</em>
                 </p>
-                {% if designer["Open to Assistant/Co-"] == 'True' %}
+                {% if designer["Open to Assistant/Co"] == 'True' %}
                 <p class="card-text">
                   Open to Assistant or Co- Designer Positions
                 </p>
                 {% endif %}
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <p class="card-text">
+                    Relevant Experience: <em>{{ designer["Relevant Experience"] }}</em>
+                </p>
+                <p class="card-text">
+                   Additional Info: <em>{{ designer["Additional Info"] }}</em>
+                </p>
+                <a href="mailto: {{ designer["Email"] }}" class="card-link">Email: {{ designer["Email"] }}</a>
               </div>
             </div>
           {% endfor %}
