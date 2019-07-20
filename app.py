@@ -1,13 +1,10 @@
 from flask import Flask, request, render_template
 from flask_restful import Resource, Api, reqparse
-from flask_cors import CORS
 from core import designers
-
-
 
 app = Flask(__name__)
 api = Api(app)
-CORS(app)
+
 parser = reqparse.RequestParser()
 parser.add_argument("form_response")
 
