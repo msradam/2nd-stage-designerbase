@@ -36,6 +36,4 @@ def store_designer(args):
         index = len(sheet.get_all_records()) + 1
     sheet.insert_row(row, index)
     return row
-    else:
-        return None
 
