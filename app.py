@@ -16,7 +16,7 @@ def index():
 
 class Designers(Resource):
     def get(self):
-        return len(designers.get_designer_records())
+        return designers.get_designer_records()
 
     def post(self):
         args = parser.parse_args()
