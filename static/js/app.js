@@ -1,4 +1,3 @@
-const url = "https://second-stage-designerbase.herokuapp.com/api"
 
 const app = new Vue({
     el: '#app',
