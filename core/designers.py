@@ -35,7 +35,10 @@ def store_designer(args):
         specialized_choices = str(answer_list[5]['choices']['labels']).strip('[\']"')
     except:
         specialized_choices = "None"
-    possible_assistant = str(answer_list[6]['boolean'])
+    try:
+        possible_assistant = str(answer_list[6]['boolean'])
+    except:
+        possible_assistant = False
     try:
         experience = answer_list[7]['text']
     except:
