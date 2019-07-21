@@ -1,6 +1,4 @@
-# Second Stage DesignerBase
-
-![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)
+# 🎭 Second Stage DesignerBase ![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)
 
 A web app for Wesleyan's Second Stage Theater Company, intended for production teams to seek out designers and for designers to make themselves known publicly to the theater community by expressing their interest in design positions.
 
