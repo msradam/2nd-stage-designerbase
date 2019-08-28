@@ -1,4 +1,4 @@
-# 🎭 Wesleyan Student Theater DesignerBase ![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)
+# 🎭 Wesleyan Student Theater DesignerBase
 
 A web app for student theater organizations at Wesleyan, intended for production teams to seek out designers and for designers to make themselves known publicly to the theater community by expressing their interest in design positions.
 
