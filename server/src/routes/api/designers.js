@@ -4,14 +4,19 @@ const router = express.Router();
 const gSheet = require('google-spreadsheet');
 var creds = require('../../designerbase_secret.json');
 
+// Initialize a new gSheet object with the ID of the Google Sheet
 var doc = new gSheet('1eJ33RnNv26R9hP5Cv0VwguMaQ9rTvF47H19bWO9WWEs');
+
+// @route    GET api/designers
+// @desc     Retrieve a list of designers
+// @access   Public
 
 router.get('/', async (req, res) => {
   try {
-    doc.useServiceAccountAuth(creds, function(err) {
+    doc.useServiceAccountAuth(creds, function (err) {
       // Retrieve Google Spreadsheet rows response
       //
-      doc.getRows(1, function(err, rows) {
+      doc.getRows(1, function (err, rows) {
         designers = rows.map(designer => ({
           first_name: designer.firstname,
           last_name: designer.lastname,
@@ -40,28 +45,40 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    // doc.useServiceAccountAuth(creds, function(err) {
-    //   doc.addRow(1, req.body, function(err) {
-    //     if (err) {
-    //       console.log(err);
-    //     }
-    //   });
-    // });
-    const answers = req.body.form_response.answers;
-    designer_form = {
-      first_name: answers[0].text,
-      last_name: answers[1].text,
-      email: answers[2].text,
-      class_year: answers[3].text,
-      design_positions: answers[4].text.split(','),
-      specialized_positions: answers[5].text,
-      opentoassistantco: answers[6].text,
-      relevant_experience: answers[7].text,
-      additional_info: answers[8].text
-    };
 
-    console.log(req.body.form_response.answers);
-    res.status(200).send(designer_form);
+    const answers = req.body.form_response.answers;
+    const parse_answer = (ans_value) => {
+
+      let ans_obj = {
+        ref: ans_value.field.ref
+      }
+
+      if (ans_value.type === 'choices') {
+        ans_obj.ans_response = ans_value.choices.labels
+      }
+
+      else {
+        ans_obj.ans_response = ans_value[ans_value.type]
+      }
+
+      return ans_obj
+    }
+    parsed_answers = answers.map(parse_answer)
+    console.log(parsed_answers)
+    // console.log(parsed_answers)
+    designer_form_submission = {}
+    parsed_answers.forEach(value =>
+      designer_form_submission[value.ref] = value.ans_response
+    )
+    console.log(designer_form_submission)
+    doc.useServiceAccountAuth(creds, function (err) {
+      doc.addRow(1, json(designer_form_submission), function (err) {
+        if (err) {
+          console.log(err);
+        }
+      });
+    });
+    res.status(200).send('Success');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
