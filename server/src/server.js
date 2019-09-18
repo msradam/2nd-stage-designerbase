@@ -5,7 +5,7 @@ app.use(express.json());
 app.use('/api/designers', require('./routes/api/designers'));
 
 app.use(cors());
-
+app.use(express.static('build'))
 const PORT = 8000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
