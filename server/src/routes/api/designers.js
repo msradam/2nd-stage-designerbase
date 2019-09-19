@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
       // Retrieve Google Spreadsheet rows response
       //
       doc.getRows(1, function (err, rows) {
-        console.log(rows)
         designers = rows.map(designer => ({
           
           first_name: designer['first-name'],
@@ -66,7 +65,6 @@ router.post('/', async (req, res) => {
       return ans_obj
     }
     parsed_answers = answers.map(parse_answer)
-    console.log(parsed_answers)
     // console.log(parsed_answers)
     designer_form_submission = {}
     parsed_answers.forEach(value =>
