@@ -17,16 +17,18 @@ router.get('/', async (req, res) => {
       // Retrieve Google Spreadsheet rows response
       //
       doc.getRows(1, function (err, rows) {
+        console.log(rows)
         designers = rows.map(designer => ({
-          first_name: designer.firstname,
-          last_name: designer.lastname,
-          email: designer.email,
-          class_year: designer.classyear,
-          design_positions: designer.designpositions,
-          specialized_positions: designer.specializedpositions,
-          opentoassistantco: designer.opentoassistantco,
-          relevant_experience: designer.relevantexperience,
-          additional_info: designer.additional_info
+          
+          first_name: designer['first-name'],
+          last_name: designer['last-name'],
+          email: designer['email'],
+          class_year: designer['class-year'],
+          design_positions: designer['design-positions'],
+          specialized_positions: designer['specialized-positions'],
+          opentoassistantco: designer['assistant-yes-no'],
+          relevant_experience: designer['experience'],
+          additional_info: designer['additionalinfo']
         }));
 
         console.log(rows[0]);
