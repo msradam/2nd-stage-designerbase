@@ -72,7 +72,7 @@ router.post('/', async (req, res) => {
     )
     console.log(designer_form_submission)
     doc.useServiceAccountAuth(creds, function (err) {
-      doc.addRow(1, json(designer_form_submission), function (err) {
+      doc.addRow(1, designer_form_submission, function (err) {
         if (err) {
           console.log(err);
         }
