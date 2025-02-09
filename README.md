@@ -2,7 +2,7 @@
 
 A web app for student theater organizations at Wesleyan, intended for production teams to seek out designers and for designers to make themselves known publicly to the theater community by expressing their interest in design positions.
 
-![DesignerBase](https://raw.githubusercontent.com/msradam/2nd-stage-designerbase/master/assets/2s_db_screenshot.png)
+![DesignerBase](designerdatabase_form.png)
 
 Designer information is stored in and retreived from a Google Sheet available to the Second Stage company's Team Drive. 
 
